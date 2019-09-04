@@ -80,10 +80,15 @@ Module.register("MMM-TodayInHistory", {
       return document.createElement("div");
     }
     if (!this.loaded) {
+      var self = this;
       var loading = document.createElement("div");
       loading.innerHTML = "Hello, TodayInHistory is loading...";
       loading.className = "normal regular medium";
-      this.getEvents();
+      setTimeout(function() {
+        if (!self.loaded) {
+          self.getEvents();
+        }
+      }, 8000);
       return loading;
     }
 
