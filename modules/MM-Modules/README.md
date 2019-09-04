@@ -1,12 +1,6 @@
 # MM-Modules
 module set for [MagicMirror²](https://github.com/MichMich/MagicMirror).
 
-## Installation
-
-1. Navigate into your MagicMirror `modules` folder and execute<br>
-`git clone http://www.zuos.pub:30000/zuoyayong/MM-Modules.git`.
-2. Enter the new `MM-Modules` directory and execute `./install.sh`.
-
 ## The MIT License (MIT)
 
 MIT License
