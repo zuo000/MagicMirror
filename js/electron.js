@@ -52,7 +52,7 @@ function createWindow() {
 
 	// Open the DevTools if run with "npm start dev"
 	if (process.argv.includes("dev")) {
-		mainWindow.webContents.openDevTools();
+		mainWindow.webContents.openDevTools({mode:'detach'});
 	}
 
 	// Set responders for window events.
