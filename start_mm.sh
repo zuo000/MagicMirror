@@ -1,2 +1,2 @@
-cd ~/MagicMirror_GL
+cd ~/MagicMirror
 DISPLAY=:0 npm start
