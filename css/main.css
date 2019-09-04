@@ -211,7 +211,8 @@ sup {
 
 .region.third,
 .region.middle.center {
-  width: 100%;
+  width: 50%;
+  left: 25%;
   text-align: center;
   -moz-transform: translateY(-50%);
   -o-transform: translateY(-50%);
@@ -226,10 +227,11 @@ sup {
 
 .region.middle.center {
   top: 50%;
+  margin: 0 auto;
 }
 
 .region.lower.third {
-  top: 66%;
+  top: 86%;
 }
 
 .region.left {

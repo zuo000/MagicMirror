@@ -1,0 +1,5 @@
+#put this file under ~/.config/autostart/
+[Desktop Entry]
+Type=Application
+Terminal=false
+Exec=pm2 start /home/pi/MagicMirror/pm2.json

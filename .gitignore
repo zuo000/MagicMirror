@@ -64,7 +64,6 @@ Temporary Items
 !/modules/node_helper/**
 
 # Ignore all modules except the default modules.
-/modules/**
 !/modules/default
 !/modules/default/**
 !/modules/README.md**
@@ -81,3 +80,6 @@ Temporary Items
 *.orig
 *.rej
 *.bak
+
+# jpgs
+/modules/MM-Modules/MMM-PhoneNotification/icons/*.jpg

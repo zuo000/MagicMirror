@@ -56,6 +56,7 @@
     "time-grunt": "latest"
   },
   "dependencies": {
+    "btoa": "^1.2.1",
     "colors": "^1.1.2",
     "electron": "^3.0.13",
     "express": "^4.16.2",
@@ -64,6 +65,8 @@
     "helmet": "^3.9.0",
     "iconv-lite": "latest",
     "moment": "latest",
+    "node-forge": "^0.8.5",
+    "pm2": "^3.5.1",
     "request": "^2.88.0",
     "rrule": "^2.6.2",
     "rrule-alt": "^2.2.8",

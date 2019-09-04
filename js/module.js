@@ -417,6 +417,7 @@ var Module = Class.extend({
 		callback = callback || function () { };
 		options = options || {};
 
+    this.hidden = false;
 		this.resume();
 		MM.showModule(this, speed, callback, options);
 	}

@@ -1,0 +1,17 @@
+{
+  "name": "MMM-PhoneNotification",
+  "description": "Widget that notifies mirror on new incoming phone notification.",
+  "keywords": [
+    "phone notification",
+    "mirror",
+    "smart mirror",
+    "notification"
+  ],
+  "version": "0.2.0",
+  "dependencies": {
+    "ws" : "latest",
+    "node-forge": "latest",
+    "atob" : "latest",
+    "btoa" : "latest"
+  }
+}

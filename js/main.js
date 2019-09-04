@@ -55,6 +55,10 @@ var MM = (function() {
 			domCreationPromise.then(function() {
 				sendNotification("MODULE_DOM_CREATED", null, null, module);
 			}).catch(Log.error);
+      if (module.data.position == "middle_center") {
+        module.hidden = true;
+        hideModule(module, 1000, function (){module.suspend()});
+      }
 		});
 
 		updateWrapperStates();
