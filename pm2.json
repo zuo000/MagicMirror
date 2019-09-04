@@ -1,9 +1,1 @@
-{
-    "apps": [
-        {
-            "name": "mm",
-            "script": "~/MagicMirror/start_mm.sh",
-            "watch" : ["~/MagicMirror/config/config.js"]
-        }
-    ]
-}
+installers/pm2_MagicMirror.json
