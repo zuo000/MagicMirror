@@ -812,6 +812,13 @@
     "desc": "Displays some of your Tesla's data on your Mirror (early prototype)"
   },
   {
+    "longname": "MMM-TeslaMate",
+    "id": "denverquane/MMM-Teslamate",
+    "url": "https://github.com/denverquane/MMM-Teslamate",
+    "author": "denverquane",
+    "desc": "Display live Tesla status using the Teslamate self-hosted monitoring system and MQTT Broker"
+  },
+  {
     "longname": "MMM-TeslaStatus",
     "id": "aduyng/MMM-TeslaStatus",
     "url": "https://github.com/aduyng/MMM-TeslaStatus",
@@ -3295,6 +3302,13 @@
     "url": "https://github.com/AdamMoses-GitHub/MMM-ImageSlideshow",
     "author": "AdamMoses-GitHub",
     "desc": "Displays images one-at-a-time from local folders."
+  },
+  {
+    "longname": "MMM-PlexSlideshow",
+    "id": "PjTewkesbury/MMM-PlexSlideshow",
+    "url": "https://github.com/PjTewkesbury/MMM-PlexSlideshow",
+    "author": "PJTewkesbury-GitHub",
+    "desc": "Displays images in the bacground one at a time, pulling the images from a PLEX Media Server."
   },
   {
     "longname": "MMM-Inspirobot",

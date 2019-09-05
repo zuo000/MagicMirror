@@ -4,11 +4,25 @@ Module.register("MMM-TodayInHistory", {
     maxEvents: 5
   },
 
+  /*getTemplate: function() {
+    return "MMM-TodayInHistory.njk";
+  },*/
+
   suspended: false,
   loaded: false,
+  dom: null,
+  allEvents: null,
 
   resume: function() {
     this.suspended = false;
+    if (!this.allEvents) {
+      this.dom = null;
+      this.getEvents();
+    }
+    else {
+      this.events = this.getRandomArrayElements(this.allEvents, this.config.maxEvents);
+      this.dom = this.createInitDom();
+    }
     return this.updateDom();
   },
   suspend: function () {
@@ -52,7 +66,19 @@ Module.register("MMM-TodayInHistory", {
     switch (notification) {
       case "TIH_GET_EVENTS_RET":
         this.processEvents(payload);
+        this.dom = this.createInitDom();
         this.updateDom();
+        break;
+      case "TIH_GET_EVENT_CONTENT_RET":
+        this.dom = this.processEventContent(payload);
+        this.updateDom();
+        var self = this;
+        var onclick = function () {
+          self.dom = self.createInitDom();
+          self.updateDom();
+          window.removeEventListener("click", onclick);
+        };
+        window.addEventListener("click", onclick);
         break;
       default:
         break;
@@ -61,7 +87,16 @@ Module.register("MMM-TodayInHistory", {
 
   processEvents: function(data) {
     this.loaded = true;
-    this.events = data;
+    this.allEvents = data;
+    this.events = this.getRandomArrayElements(data, this.config.maxEvents);
+  },
+
+  processEventContent: function(data) {
+    var content = document.createElement("div");
+    content.className = "event_content"
+    content.innerText = "       " + data.content;
+
+    return content;
   },
 
   getRandomArrayElements: function(arr, count) {
@@ -75,11 +110,32 @@ Module.register("MMM-TodayInHistory", {
     return shuffled.slice(min);
   },
 
+  createInitDom: function() {
+    var table = document.createElement("table");
+    table.className = "medium event_table "
+
+    for (let e of this.events) {
+      console.log(this.name + " get event:" + e.date + " ", e.title);
+      var row = this.makeRow(e.date + ", " + e.title);
+      var self = this;
+      row.addEventListener("click", function () {
+        self.dom = document.createElement("div");
+        self.dom.innerHTML = "Hello, TodayInHistory is loading...";
+        self.dom.className = "normal regular medium";
+        self.updateDom();
+        self.getEventContent(e.eid);
+      });
+      table.appendChild(row);
+    }
+
+    return table;
+  },
+
   getDom: function() {
     if (this.suspended == true) {
       return document.createElement("div");
     }
-    if (!this.loaded) {
+    if (!this.loaded || !this.dom) {
       var self = this;
       var loading = document.createElement("div");
       loading.innerHTML = "Hello, TodayInHistory is loading...";
@@ -92,16 +148,7 @@ Module.register("MMM-TodayInHistory", {
       return loading;
     }
 
-    var wrapper = document.createElement("table");
-    wrapper.className = "medium tih_table "
-
-    for (let e of this.getRandomArrayElements(this.events, this.config.maxEvents)) {
-      console.log(this.name + " get event:" + e.date + " ", e.title);
-      var row = this.makeRow(e.date + ", " + e.title);
-      wrapper.appendChild(row);
-    }
-
-    return wrapper;
+    return this.dom;
   },
 
   getEventContent: function(eventId) {

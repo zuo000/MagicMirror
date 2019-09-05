@@ -38,7 +38,7 @@ module.exports = NodeHelper.create({
 
   getEventContent: function(payload) {
     request({
-      url: "https://api.shenjian.io/todayOnhistory/queryDetail?appid=" + payload.appId + "&date=" + payload.eventId,
+      url: "https://api.shenjian.io/todayOnhistory/queryDetail/?appid=" + payload.appId + "&date=" + payload.eventId,
       method: 'GET',
     }, (error, response, body) => {
       if (!error && response.statusCode == 200) {
