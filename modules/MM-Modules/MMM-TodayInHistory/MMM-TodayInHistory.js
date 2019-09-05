@@ -47,14 +47,13 @@ Module.register("MMM-TodayInHistory", {
   start: function() {
     console.log("Starting module: " + this.name);
 
-    moment.locale('zh-cn');
+    //moment.locale('zh-cn');
     this.loaded = false;
     this.events = null;
     this.getEvents();
   },
 
   getEvents: function() {
-
     var dateStr = moment().format('M/D');
     this.sendSocketNotification('TIH_GET_EVENTS', {
       appId: this.config.appId,
