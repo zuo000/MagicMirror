@@ -596,7 +596,7 @@ var Remote = {
                     self.setStatus("error", false, wrapper);
                 } else {
                     event.currentTarget.className = event.currentTarget.className.replace("toggled-off", "toggled-on");
-                    self.showModule(event.currentTarget.id);
+                    self.showModule(event.currentTarget.id, true);
                 }
             } else {
                 event.currentTarget.className = event.currentTarget.className.replace("toggled-on", "toggled-off");
@@ -1425,9 +1425,9 @@ var buttons = {
     "power-button": function() {
         window.location.hash = "power-menu";
     },
-    /*"edit-button": function() {
+    "edit-button": function() {
         window.location.hash = "edit-menu";
-    },*/
+    },
     "settings-button": function() {
         var self = Remote;
 

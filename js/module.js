@@ -409,6 +409,15 @@ var Module = Class.extend({
 	 * argument options object - Optional settings for the hide method.
 	 */
 	show: function (speed, callback, options) {
+    if (this.data.position == "middle_center") {
+      var modules = MM.getModules();
+      modules.forEach((mod) => {
+        if (mod.data.position == "middle_center" && !mod.hidden) {
+          mod.hide(0, {force: true});
+        }
+      });
+    }
+
 		if (typeof callback === "object") {
 			options = callback;
 			callback = function () { };

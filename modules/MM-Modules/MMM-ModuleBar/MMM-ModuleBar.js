@@ -4,7 +4,7 @@ Module.register("MMM-ModuleBar",{
 
   defaults: {
       // Allow the module to force modules to be shown (if hidden and locked by another module ex. profile-switcher).
-      allowForce: false,
+      allowForce: true,
       // Determines if the border around the buttons should be shown.
       showBorder: true,
       // The minimum width for all the buttons.
@@ -18,7 +18,6 @@ Module.register("MMM-ModuleBar",{
       // The speed of the hide and show animation.
       animationSpeed: 1000,
       // The default button 1. Add your buttons in the config.
-      shown_module: null,
       buttons: {
           /*"1": {
           // The modules exact name to be affected.
@@ -122,11 +121,6 @@ Module.register("MMM-ModuleBar",{
                   var idnr = modules[i].data.identifier.split("_");
                   if (idnr[1] == data.idnum || data.idnum == null) {
                       if (modules[i].hidden) {
-                          if (modules[i].data.position == "middle_center" && self.shown_module != null) {
-                            self.shown_module.hide(0, {force: self.config.allowForce});
-                            self.shown_module = null;
-                          }
-
                           if (data.showUrl != null) {
                               fetch(data.showUrl);
                               console.log("Visiting show URL: "+data.showUrl);
@@ -134,10 +128,6 @@ Module.register("MMM-ModuleBar",{
 
                           modules[i].show(self.config.animationSpeed, {force: self.config.allowForce});
                           console.log("Showing "+modules[i].name+" ID: "+idnr[1]);
-
-                          if (modules[i].data.position == "middle_center") {
-                            self.shown_module = modules[i];
-                          }
                       }else{
                           modules[i].hide(self.config.animationSpeed, {force: self.config.allowForce});
                           console.log("Hiding "+modules[i].name+" ID: "+idnr[1]);
@@ -145,10 +135,6 @@ Module.register("MMM-ModuleBar",{
                           if (data.hideUrl != null) {
                               fetch(data.hideUrl);
                               console.log("Visiting hide URL: "+data.hideUrl);
-                          }
-
-                          if (modules[i].data.position == "middle_center") {
-                            self.shown_module = null;
                           }
                       }
                   }
