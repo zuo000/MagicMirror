@@ -1,6 +1,7 @@
 .power_wrapper {
   position: absolute;
-  left: -60px;
-  bottom: -163px;
+  left: -45px;
+  bottom: -500%;
   cursor: pointer;
+  opacity: 0.4;
 }
