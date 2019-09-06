@@ -1,3 +1,6 @@
 .power_wrapper {
-    margin-bottom: -100px;
+  position: absolute;
+  left: -60px;
+  bottom: -163px;
+  cursor: pointer;
 }

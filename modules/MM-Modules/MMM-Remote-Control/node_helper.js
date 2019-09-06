@@ -1007,6 +1007,7 @@ module.exports = NodeHelper.create(Object.assign({
         },
 
         socketNotificationReceived: function(notification, payload) {
+            //console.log("node_helper for MMM-Remote-Control received notification:" + notification + ", " + JSON.stringify(payload));
             var self = this;
 
             if (notification === "CURRENT_STATUS") {
