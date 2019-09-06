@@ -1,0 +1,29 @@
+.cell{
+    width: 1em;  
+    height: 1em;
+    border:1px dashed rgba(255,255,255,0.1);
+    font-size:120px;
+    overflow: hidden;
+    position:absolute;
+    left:50%;
+    margin:-0.5em 0 0  -0.5em;
+    opacity:0;
+    animation:go 6s;
+    transform-origin:left bottom;
+}
+.num{
+    position:absolute;
+    width: 1em;
+    line-height: 1em;  
+    text-align: center;
+    animation:run 6s steps(6);
+}
+@keyframes run{
+    0%{top:0;}
+    100%{top:-6em;}
+}
+@keyframes go{
+  0%   {opacity:1;}
+  84%  {opacity:1;transform:rotate(0deg) scale(1);}
+  100% {opacity:0;transform:rotate(360deg) scale(.01);}
+}

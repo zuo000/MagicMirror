@@ -79,6 +79,11 @@ Module.register("MMM-ModuleBar",{
             symbol: "flag"
           },
           "11": {
+            module: "MMM-10Seconds",
+            text:	"10 Seconds",
+            symbol: "repeat"
+          },
+          "12": {
             module: "MMM-SystemStats",
             text:	"System Status",
             symbol: "info-circle"
