@@ -87,6 +87,11 @@ Module.register("MMM-ModuleBar",{
             text:	"System Status",
             symbol: "info-circle"
           },
+          "13": {
+            module: "MMM-QRCode",
+            text:	"Remote Control",
+            symbol: "cogs"
+          },
       }
   },
 
