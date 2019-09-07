@@ -19,6 +19,17 @@ Module.register("MMM-QRCode", {
 		showRaw    : true
 	},
 
+  suspended: false,
+
+  resume: function() {
+    this.suspended = false;
+    this.updateDom();
+  },
+  suspend: function () {
+    this.suspended = true;
+    this.updateDom();
+  },
+
 	getStyles: function() {
 		return ["MMM-QRCode.css"];
 	},
@@ -34,6 +45,10 @@ Module.register("MMM-QRCode", {
 	},
 
 	getDom: function() {
+    if (this.suspended == true) {
+      return document.createElement('div');
+    }
+
 		const wrapperEl = document.createElement("div");
 		wrapperEl.classList.add('qrcode');
 
