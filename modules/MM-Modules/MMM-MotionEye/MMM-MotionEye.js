@@ -19,7 +19,8 @@ Module.register("MMM-MotionEye",{
         allowForce: false,
 		// The speed of the hide and show animation.
 		animationSpeed: 2000,
-		forcedRefreshInterval: 0
+		forcedRefreshInterval: 0,
+    useLocalDev: true
 	},
 
   suspended: false,
@@ -45,6 +46,7 @@ Module.register("MMM-MotionEye",{
 
 	suspend: function() {
 		if (this.refreshTimer) window.clearInterval(this.refreshTimer);
+    if (this.mediaStreamTrack) this.mediaStreamTrack.stop();
     this.suspended = true;
     this.updateDom();
 	},
@@ -53,6 +55,26 @@ Module.register("MMM-MotionEye",{
 	getDom: function() {
     if (this.suspended == true) {
       return document.createElement("div");
+    }
+
+    if (this.config.useLocalDev) {
+      var wrapper = document.createElement("div");
+      var video = document.createElement("video");
+      video.setAttribute("autoplay", "autoplay");
+      wrapper.appendChild(video);
+
+      let constraints = {
+          video: { width: this.config.width , height: 500},
+          audio: false
+      };
+      let promise = navigator.mediaDevices.getUserMedia(constraints);
+      promise.then((mediaStream) => {
+        this.mediaStreamTrack = typeof mediaStream.stop === 'function' ? mediaStream : mediaStream.getTracks()[1];
+        video.srcObject = mediaStream;
+        video.play();
+      });
+
+      return wrapper;
     }
 
 		if (!this.hidden) {

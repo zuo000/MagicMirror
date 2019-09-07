@@ -53,51 +53,23 @@ Module.register("MMM-10Seconds", {
     wrapper.appendChild(cell);
     */
 
-/*    var wrapper = document.createElement("div");
-    var video = document.createElement("video");
-    var canvas = document.createElement("canvas");
-    wrapper.appendChild(video);
-    wrapper.appendChild(canvas);
-
-
-    var videoObj = {"video": true};
-    var errBack = function (error){
-      console.log("Video capture error: " + error.message, error.code);
-    };
-
-    if (navigator.getUserMedia) {
-      navigator.getUserMedia(videoObj, function (stream) {
-      video.src = stream;
-      video.play();
-      }, errBack);
-    }
-    */
     var wrapper = document.createElement("div");
-    var input1 = document.createElement("input");
-    input1.setAttribute("type", "button");
-    input1.setAttribute("title", "turn on dev");
-    input1.setAttribute("value", "turn on dev");
-    input1.onclick = function() {
-        navigator.getUserMedia({
-            'video': {
-          'optional': [{
-                              'sourceId': exArray[1] //0为前置摄像头，1为后置
-                      }] },
-          'audio':true
-      }, function(stream) {  
-              if (video.mozSrcObject !== undefined) {  
-                  video.mozSrcObject = stream;  
-              }  
-              else {  
-                  video.src = window.URL && window.URL.createObjectURL(stream) || stream;  
-              }  
-    
-              //video.play();  
-    
-      }, function(e) {  
-              alert('Error！'+e);  
-      });
+    var video = document.createElement("video");
+    video.setAttribute("autoplay", "autoplay");
+    video.src = "http://localhost:8765/picture/1/frame/";
+    wrapper.appendChild(video);
+
+
+    /*let constraints = {
+        video: { width: 800, height: 500 },
+        audio: false
     };
+    let promise = navigator.mediaDevices.getUserMedia(constraints);
+    promise.then((mediaStream) => {
+      mediaStreamTrack = typeof mediaStream.stop === 'function' ? mediaStream : mediaStream.getTracks()[1];
+      video.srcObject = mediaStream;
+      video.play();
+    });*/
 
     return wrapper;
   },
