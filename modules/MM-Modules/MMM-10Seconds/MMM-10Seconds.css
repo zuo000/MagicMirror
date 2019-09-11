@@ -30,3 +30,46 @@
   width: 800;
   height: 500;
 }
+video::-internal-media-controls-download-button {
+      display:none;
+}
+video::-webkit-media-controls-enclosure {
+      overflow:hidden;
+}
+video::-webkit-media-controls-panel {
+      width: calc(100% + 30px);
+}
+.blink_wrapper{
+  color: #666;
+  margin-top: 30px;
+}
+@keyframes blink{
+  0%{opacity: 1;}
+  100%{opacity: 0;}
+}
+
+@-webkit-keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+    0% {opacity: 1; }
+    100% { opacity: 0;}
+}
+@-o-keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.blink{
+    color: #ff0000;
+    animation: blink 2s linear infinite;
+    -webkit-animation: blink 2s linear infinite;
+    -moz-animation: blink 2s linear infinite;
+    -ms-animation: blink 2s linear infinite;
+    -o-animation: blink 2s linear infinite;
+}

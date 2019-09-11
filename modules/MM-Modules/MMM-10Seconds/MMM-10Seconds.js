@@ -27,6 +27,7 @@ Module.register("MMM-10Seconds", {
   suspend: function () {
     this.suspended = true;
     if (this.mediaStreamTrack) this.mediaStreamTrack.stop();
+    if (this.recorder) this.recorder.stop();
     this.updateDom();
   },
 
@@ -106,9 +107,18 @@ Module.register("MMM-10Seconds", {
             this.mediaStreamTrack.stop();
             this.state = gui_state.finish_record;
             this.updateDom();
-          }, this.config.recordLength * 1000);
+          }, (this.config.recordLength + 1) * 1000);
         });
         wrapper.appendChild(video);
+
+        var blink_wrapper = document.createElement("div");
+        blink_wrapper.className = "blink_wrapper";
+        var blink = document.createElement("span");
+        blink.className = "blink";
+        blink.innerText = "Recording...";
+
+        blink_wrapper.appendChild(blink);
+        wrapper.appendChild(blink_wrapper);
 
         return wrapper;
       }
@@ -117,9 +127,15 @@ Module.register("MMM-10Seconds", {
         var video = document.createElement("video");
         video.setAttribute("controls", "controls");
         //video.setAttribute("loop", "loop");
-        video.src = "modules/MM-Modules/MMM-10Seconds/" + this.filename;
+        video.src = "modules/MM-Modules/MMM-10Seconds/videos/" + this.filename;
 
         wrapper.appendChild(video);
+        
+        var onclick = () => {
+          window.removeEventListener("click", onclick);
+          this.resume();
+        };
+        //window.addEventListener("click", onclick);
         return wrapper;
       }
       default: 

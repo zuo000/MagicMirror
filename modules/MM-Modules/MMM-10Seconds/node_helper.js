@@ -20,7 +20,7 @@ module.exports = NodeHelper.create({
   saveData: function(payload) {
     let buffer = new Buffer.from(payload);
     var filename = moment().format("YYYYMMDDHHmmss") + ".mp4";
-    fs.writeFile("modules/MM-Modules/MMM-10Seconds/" + filename, buffer, {}, (err, res) => {
+    fs.writeFile("modules/MM-Modules/MMM-10Seconds/videos/" + filename, buffer, {}, (err, res) => {
       if (err) {
         console.error(err);
         return;
