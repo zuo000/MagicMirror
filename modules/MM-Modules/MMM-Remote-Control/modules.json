@@ -371,6 +371,13 @@
     "desc": "Displays the last post from Les Joies Du Code, or TheCodingLove (The english version)."
   },
   {
+    "longname": "MMM-TMB",
+    "id": "jaumebosch/MMM-TMB",
+    "url": "https://github.com/jaumebosch/MMM-TMB",
+    "author": "jaumebosch",
+    "desc": "Display Barcelona's TMB bus times"
+  },
+  {
     "longname": "MMM-TransLoc",
     "id": "OrangeHoopla/MMM-TransLoc",
     "url": "https://github.com/OrangeHoopla/MMM-TransLoc",

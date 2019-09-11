@@ -1,7 +1,6 @@
 .cell{
     width: 1em;  
     height: 1em;
-    border:1px dashed rgba(255,255,255,0.1);
     font-size:120px;
     overflow: hidden;
     position:absolute;

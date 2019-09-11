@@ -1,5 +1,6 @@
 const NodeHelper = require('node_helper');
-const request = require('request');
+var fs = require('fs');
+var moment = require('moment');
 
 module.exports = NodeHelper.create({
   start: function() {
@@ -8,46 +9,25 @@ module.exports = NodeHelper.create({
 
   socketNotificationReceived: function(notification, payload) {
     switch (notification) {
-      case "HA_GET_STATES":
-        this.getStates(payload);
-        break;
-      case "HA_POST_STATE":
-        this.postState(payload);
+      case "10S_SAVE_DATA":
+        this.saveData(payload);
         break;
       default:
         break;
     }
   },
 
-  getStates: function(payload) {
-    request({
-      url: payload.baseUrl + "/api/states?api_password=" + payload.apiPassword,
-      method: 'GET'
-    }, (error, response, body) => {
-      if (!error && response.statusCode == 200) {
-        var result = JSON.parse(body);
-        if (result.length > 0) {
-          this.sendSocketNotification('HA_GET_STATES_RET', result);
-        }
+  saveData: function(payload) {
+    let buffer = new Buffer.from(payload);
+    var filename = moment().format("YYYYMMDDHHmmss") + ".mp4";
+    fs.writeFile("modules/MM-Modules/MMM-10Seconds/" + filename, buffer, {}, (err, res) => {
+      if (err) {
+        console.error(err);
+        return;
       }
     });
+    this.sendSocketNotification("10S_SAVE_DATA_RET", filename);
   },
 
-  postState: function(payload) {
-    var url = payload.baseUrl + "/api/services/" + payload.equipType + "/turn_" + payload.state + "?api_password=" + payload.apiPassword;
-    var requestData = {"entity_id": payload.entityId};
-
-    request({
-      url: url,
-      method: 'POST',
-      json: true,
-      headers: {"content-type": "application/json"},
-      body: requestData
-    }, (error, response, body) => {
-      if (!error && response.statusCode == 200) {
-          this.sendSocketNotification('HA_POST_STATE_RET');
-      }
-    });
-  },
 
 });
