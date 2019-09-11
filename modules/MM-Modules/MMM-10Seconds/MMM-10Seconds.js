@@ -25,9 +25,10 @@ Module.register("MMM-10Seconds", {
     this.updateDom();
   },
   suspend: function () {
+    this.state = gui_state.init;
     this.suspended = true;
     if (this.mediaStreamTrack) this.mediaStreamTrack.stop();
-    if (this.recorder) this.recorder.stop();
+    //if (this.recorder) this.recorder.stop();
     this.updateDom();
   },
 
@@ -131,10 +132,6 @@ Module.register("MMM-10Seconds", {
 
         wrapper.appendChild(video);
         
-        var onclick = () => {
-          window.removeEventListener("click", onclick);
-          this.resume();
-        };
         //window.addEventListener("click", onclick);
         return wrapper;
       }
