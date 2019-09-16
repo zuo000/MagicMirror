@@ -69,7 +69,7 @@ Module.register("MMM-ModuleBar",{
           },
           "9": {
             module: "MMM-MotionEye",
-            text:	"MotionEye",
+            text:	"Surveillance",
             symbol: "video-camera"
           },
           "10": {
@@ -79,8 +79,9 @@ Module.register("MMM-ModuleBar",{
           },
           "11": {
             module: "MMM-10Seconds",
-            text:	"10 Seconds",
-            symbol: "repeat"
+            text:	"Dressing",
+//            symbol: "repeat"
+            symbol: "mask"
           },
           "12": {
             module: "MMM-SystemStats",

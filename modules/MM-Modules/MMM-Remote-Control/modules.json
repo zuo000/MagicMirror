@@ -371,6 +371,13 @@
     "desc": "Displays the last post from Les Joies Du Code, or TheCodingLove (The english version)."
   },
   {
+    "longname": "MMM-EMTValencia",
+    "id": "TheRaulXP/MMM-EMTValencia",
+    "url": "https://github.com/TheRaulXP/MMM-EMTValencia",
+    "author": "TheRaulXP",
+    "desc": "Get estimations for bus stops in the city of Valencia (Spain)"
+  },
+  {
     "longname": "MMM-TMB",
     "id": "jaumebosch/MMM-TMB",
     "url": "https://github.com/jaumebosch/MMM-TMB",
@@ -1055,6 +1062,13 @@
     "url": "https://github.com/SuperCaliMan/MMM-Trenitalia",
     "author": "Alberto Caliman",
     "desc": "Train information for single line"
+  },
+  {
+    "longname": "MMM-WeConnect",
+    "id": "ottopaulsen/MMM-WeConnect",
+    "url": "https://github.com/ottopaulsen/MMM-WeConnect",
+    "author": "ottopaulsen",
+    "desc": "Show status for your Volkswagen electric car, based on VW We Connect software formerly Car-Net)"
   },
   {
     "longname": "MMM-AlexaOnOff",
@@ -2328,7 +2342,7 @@
     "id": "idoodler/MMM-RPI-LED",
     "url": "https://github.com/idoodler/MMM-RPI-LED",
     "author": "idoodler",
-    "desc": "Control the build in LEDs of your Raspberry Pi."
+    "desc": "Control the built in LEDs of your Raspberry Pi."
   },
   {
     "longname": "MMM-RSS-FEED",
